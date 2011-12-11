@@ -1,0 +1,3 @@
+class RspecAutotestTemplate
+  # Your code goes here...
+end
