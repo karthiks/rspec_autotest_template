@@ -7,3 +7,4 @@ gem 'rspec'
 gem 'autotest-growl'
 #gem 'autotest-fsevent'  #Only Darwin (Mac OS X) systems are supported
 gem 'autotest-notification'
+gem 'test_notifier'

@@ -1,7 +1,17 @@
 require 'autotest/bundler'
 require 'autotest/growl'
 #require 'autotest/fsevent' #Only Darwin (Mac OS X) systems are supported
-require 'autotest_notification'
+#require 'autotest_notification'
+
+#When you are intensively tweaking your .autotest file, Autotest will restart itself automatically as soon as 
+#a change in the .autotest file is detected.For this you need the line below:
+require 'autotest/restart'
+
+#Once you are done installing the underlying native notification system library,
+#you can install and enable the test notifier plugin the usual way.
+require "test_notifier"
+
+
 
 #Make Failure and Error Notifications Sticky:
 #If you don’t want to miss any failure or error notifications while you get a cup of coffee, 
@@ -15,4 +25,13 @@ Autotest::Growl::clear_terminal = false
 #Show Modified Files
 #if you would like to receive a Growl notification listing the files modified before tests are re-run
 Autotest::Growl::show_modified_files = true
+
+#Ignoring Files with Exceptions
+#Source: onitor every file in your ruby/rails project for changes4. By telling it to ignore certain files, 
+#you can significally reduce its impact on the CPU, disk and battery life.
+Autotest.add_hook :initialize do |autotest|
+  %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
+    autotest.add_exception(exception)
+  end
+end
 
