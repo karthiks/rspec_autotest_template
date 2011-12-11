@@ -1,0 +1,18 @@
+require 'autotest/bundler'
+require 'autotest/growl'
+#require 'autotest/fsevent' #Only Darwin (Mac OS X) systems are supported
+require 'autotest_notification'
+
+#Make Failure and Error Notifications Sticky:
+#If you don’t want to miss any failure or error notifications while you get a cup of coffee, 
+#make them stay on your display until you explicitly click them away.
+Autotest::Growl::sticky_failure_notifications = true
+
+#Don’t Clear the Terminal
+#if you don’t want the terminal to be cleared before running a test
+Autotest::Growl::clear_terminal = false
+
+#Show Modified Files
+#if you would like to receive a Growl notification listing the files modified before tests are re-run
+Autotest::Growl::show_modified_files = true
+
